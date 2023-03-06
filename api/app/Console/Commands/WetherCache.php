@@ -37,7 +37,7 @@ class WetherCache extends Command
     /**
      * Execute the console command.
      */
-    public function handle(IWetherService $wetherService): void
+    public function handle(IWetherService $wetherService): int
     {
         Log::info('Wether caching command is starting...');
         $REDIS_KEY = config('constants.REDIS_KEY');
@@ -52,5 +52,6 @@ class WetherCache extends Command
             Redis::set($key, json_encode($weather));
         });
         Log::info('Wether caching command is ending');
+        return 0;
     }
 }

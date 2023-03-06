@@ -23,7 +23,7 @@ export default {
   <div v-if="users.length < 1">Pinging the api...</div>
 
   <div class="container m-auto" v-else>
-    <ul class="max-w-md divide-y divide-gray-200 dark:divide-gray-700">
+    <ul class="max-w-md m-auto divide-y divide-gray-200 dark:divide-gray-700">
       <li :key="user.id" v-for="user in users" class="pb-3 sm:pb-4">
         <div class="flex items-center space-x-4">
           <div class="flex-shrink-0">
