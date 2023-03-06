@@ -16,7 +16,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
-
+    'wether-driver' => env('WETHER_DRIVER', 'api.weather.gov'),
     /*
     |--------------------------------------------------------------------------
     | Application Environment
@@ -194,7 +194,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
+        App\Providers\WetherServiceProvider::class,
     ],
 
     /*
