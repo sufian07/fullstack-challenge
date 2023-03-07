@@ -8,7 +8,7 @@ RUN apt-get install -y \
     libzip-dev \
     libpng-dev \
     zip \
-    cron
+    supervisor
 
 RUN docker-php-ext-install \
     mysqli \
@@ -17,9 +17,7 @@ RUN docker-php-ext-install \
     zip \
     && docker-php-ext-enable opcache
 
-COPY crontab /etc/cron.d/crontab
-RUN chmod 0644 /etc/cron.d/crontab
-RUN crontab /etc/cron.d/crontab
-RUN touch /var/log/cron.log
 
-CMD cron && tail -f /var/log/cron.log
+
+COPY --chown=root:root supervisord.conf /etc/supervisor/conf.d/supervisord.conf
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
